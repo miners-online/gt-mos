@@ -1,0 +1,14 @@
+name: "Build GT-MOS"
+on:
+  workflow_dispatch:
+jobs:
+  build-armbian:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: armbian/build@main
+        with:
+          armbian_token:     "${{ secrets.GITHUB_TOKEN }}"  # GitHub token
+          armbian_release:   "mantic"                       # userspace
+          armbian_target:    "build"                        # build=image, kernel=kernel
+          armbian_board:     "uefi-x86"                     # build target
+          armbian_ui:        "kde-plasma"                   # desktop interface
